@@ -150,6 +150,7 @@ __metadata:
     "@codemirror/view": "npm:^6.38.7"
     "@emotion/css": "npm:^11.13.5"
     "@fontsource-variable/geist": "npm:^5.2.5"
+    "@fontsource/geist-mono": "npm:^5.2.7"
     "@fontsource/redacted-script": "npm:^5.2.8"
     "@juggle/resize-observer": "npm:^3.4.0"
     "@lezer/highlight": "npm:^1.2.3"
@@ -4327,6 +4328,13 @@ __metadata:
   version: 5.2.8
   resolution: "@fontsource-variable/geist@npm:5.2.8"
   checksum: 10/15bdedec8c10f81b0036100d27d08f633fd4149832fb4365c5f912efab4589781e6779c667272ad47f429b72d31c6e662453fd424420f2842dad4a4d5cd3f422
+  languageName: node
+  linkType: hard
+
+"@fontsource/geist-mono@npm:^5.2.7":
+  version: 5.2.7
+  resolution: "@fontsource/geist-mono@npm:5.2.7"
+  checksum: 10/7c9fe53ae5392722dbff55d344ded67beef08b75a4898446c9591375a3e924a01231d90af9300f66d6134d79a0bb4cc509529df28195dad6677ec0a33739522f
   languageName: node
   linkType: hard
 

@@ -94,6 +94,7 @@ export const styles: CSSProperties = {
     // ss01: Open digits
     // ss04: Disambiguation w/o zero
     fontFeatureSettings: '"tnum", "ss01", "ss04"',
+    fontFamily: 'Geist Mono, monospace',
   },
   notFixed: { fontFeatureSettings: '' },
   text: {

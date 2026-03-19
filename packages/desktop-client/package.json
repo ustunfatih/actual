@@ -27,6 +27,7 @@
     "@codemirror/view": "^6.38.7",
     "@emotion/css": "^11.13.5",
     "@fontsource-variable/geist": "^5.2.5",
+    "@fontsource/geist-mono": "^5.2.7",
     "@fontsource/redacted-script": "^5.2.8",
     "@juggle/resize-observer": "^3.4.0",
     "@lezer/highlight": "^1.2.3",
