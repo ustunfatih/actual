@@ -1,0 +1,13 @@
+{
+  "name": "Mondrian",
+  "description": "Inspired by Piet Mondrian's neoplastic compositions — bold primary colors on black and white",
+  "palette": {
+    "background": "#000000",
+    "surface": "#1A1A1A",
+    "text": "#FFFFFF",
+    "textOnSurface": "#000000",
+    "primary": "#225095",
+    "accent": "#DD0100",
+    "highlight": "#FAC901"
+  }
+}

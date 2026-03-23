@@ -1,0 +1,14 @@
+{
+  "name": "actual-custom-themes",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "generate": "npx ts-node scripts/generate-theme.ts",
+    "generate:mondrian": "npx ts-node scripts/generate-theme.ts themes/mondrian"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "ts-node": "^10.0.0",
+    "@types/node": "^20.0.0"
+  }
+}
