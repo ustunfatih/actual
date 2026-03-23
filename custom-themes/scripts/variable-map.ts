@@ -8,24 +8,25 @@ export type PaletteInput = {
   primary: string;
   accent: string;
   highlight: string;
+  sidebarBase?: string; // dark even in light themes — falls back to background if absent
 };
 
 type DeriveFn = (p: PaletteInput) => string;
 
-// Shorthand helpers used throughout the map
+// Shorthand helpers
 const bg = (p: PaletteInput) => p.background;
 const sf = (p: PaletteInput) => p.surface;
 const tx = (p: PaletteInput) => p.text;
 const pr = (p: PaletteInput) => p.primary;
 const ac = (p: PaletteInput) => p.accent;
 const hl = (p: PaletteInput) => p.highlight;
+const sb = (p: PaletteInput) => p.sidebarBase ?? p.background;
 
-// Derived palette tones — reusable across categories
+// Derived tones
 const bgLight = (p: PaletteInput) => c.lighten(p.background, 0.08);
 const bgLighter = (p: PaletteInput) => c.lighten(p.background, 0.15);
 const bgLightest = (p: PaletteInput) => c.lighten(p.background, 0.25);
 const sfLight = (p: PaletteInput) => c.lighten(p.surface, 0.15);
-const sfLighter = (p: PaletteInput) => c.lighten(p.surface, 0.25);
 const sfDark = (p: PaletteInput) => c.darken(p.surface, 0.3);
 const txSubdued = (p: PaletteInput) => c.darken(p.text, 0.45);
 const txLight = (p: PaletteInput) => c.darken(p.text, 0.3);
@@ -39,8 +40,10 @@ const acDarker = (p: PaletteInput) => c.darken(p.accent, 0.6);
 const hlLight = (p: PaletteInput) => c.lighten(p.highlight, 0.2);
 const hlDark = (p: PaletteInput) => c.darken(p.highlight, 0.4);
 const hlDarker = (p: PaletteInput) => c.darken(p.highlight, 0.6);
+const sbLight = (p: PaletteInput) => c.lighten(sb(p), 0.15);
+const sbLighter = (p: PaletteInput) => c.lighten(sb(p), 0.25);
 
-// Green derived from primary for positive/success states
+// Green for positive/success states (derived from primary)
 const greenish = (p: PaletteInput) => c.mix(p.primary, '#22C55E', 0.7);
 const greenDark = (p: PaletteInput) => c.darken(greenish(p), 0.3);
 const greenLight = (p: PaletteInput) => c.lighten(greenish(p), 0.25);
@@ -102,16 +105,16 @@ export const variableMap: Record<string, DeriveFn> = {
   toBudgetZero: greenish,
   toBudgetNegative: ac,
 
-  // ── Sidebar ───────────────────────────────────────────────
-  sidebarBackground: (p) => c.darken(p.background, 0.05),
+  // ── Sidebar (always dark — uses sidebarBase) ──────────────
+  sidebarBackground: sb,
   sidebarItemBackgroundPending: hlLight,
   sidebarItemBackgroundPositive: greenDark,
   sidebarItemBackgroundFailed: ac,
   sidebarItemAccentSelected: prLight,
-  sidebarItemBackgroundHover: bgLighter,
-  sidebarItemText: tx,
+  sidebarItemBackgroundHover: sbLighter,
+  sidebarItemText: (p) => c.lighten(sb(p), 0.75),
   sidebarItemTextSelected: prLight,
-  sidebarBudgetName: txLight,
+  sidebarBudgetName: sbLight,
 
   // ── Menu ──────────────────────────────────────────────────
   menuBackground: sf,
@@ -174,8 +177,8 @@ export const variableMap: Record<string, DeriveFn> = {
   buttonPrimaryBorder: pr,
   buttonPrimaryShadow: () => 'rgba(0, 0, 0, 0.6)',
   buttonPrimaryDisabledText: txSubdued,
-  buttonPrimaryDisabledBackground: bgLighter,
-  buttonPrimaryDisabledBorder: bgLighter,
+  buttonPrimaryDisabledBackground: bgLightest,
+  buttonPrimaryDisabledBorder: bgLightest,
 
   // ── Button: Normal ────────────────────────────────────────
   buttonNormalText: tx,
@@ -309,8 +312,7 @@ export const variableMap: Record<string, DeriveFn> = {
   // ── Overlay ───────────────────────────────────────────────
   overlayBackground: () => 'rgba(0, 0, 0, 0.3)',
 
-  // ── Chart Qualitative Colors ──────────────────────────────
-  // 9 distinct colors derived from palette + complements
+  // ── Chart Qualitative Colors (9 distinct) ─────────────────
   chartQual1: pr,
   chartQual2: ac,
   chartQual3: hl,

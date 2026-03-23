@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "generate": "npx ts-node scripts/generate-theme.ts",
-    "generate:mondrian": "npx ts-node scripts/generate-theme.ts themes/mondrian"
+    "scan": "node -r ts-node/register scripts/scan-and-generate.ts",
+    "generate": "node -r ts-node/register scripts/generate-theme.ts",
+    "generate:mondrian:dark": "node -r ts-node/register scripts/generate-theme.ts themes/mondrian dark",
+    "generate:mondrian:light": "node -r ts-node/register scripts/generate-theme.ts themes/mondrian light"
   },
   "devDependencies": {
-    "typescript": "^5.0.0",
+    "@anthropic-ai/sdk": "^0.39.0",
+    "@types/node": "^20.0.0",
+    "dotenv": "^16.0.0",
     "ts-node": "^10.0.0",
-    "@types/node": "^20.0.0"
+    "typescript": "^5.0.0"
   }
 }
