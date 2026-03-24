@@ -14,10 +14,13 @@ import { theme } from '@actual-app/components/theme';
 import { View } from '@actual-app/components/view';
 
 import type { ReducerState } from './constants';
+import { ByDateAutomationReadOnly } from './editor/ByDateAutomationReadOnly';
+import { GoalAutomationReadOnly } from './editor/GoalAutomationReadOnly';
 import { HistoricalAutomationReadOnly } from './editor/HistoricalAutomationReadOnly';
 import { LimitAutomationReadOnly } from './editor/LimitAutomationReadOnly';
 import { PercentageAutomationReadOnly } from './editor/PercentageAutomationReadOnly';
 import { RefillAutomationReadOnly } from './editor/RefillAutomationReadOnly';
+import { RemainderAutomationReadOnly } from './editor/RemainderAutomationReadOnly';
 import { ScheduleAutomationReadOnly } from './editor/ScheduleAutomationReadOnly';
 import { WeekAutomationReadOnly } from './editor/WeekAutomationReadOnly';
 
@@ -72,6 +75,19 @@ export function BudgetAutomationReadOnly({
       automationReadOnly = (
         <HistoricalAutomationReadOnly template={state.template} />
       );
+      break;
+    case 'by-date':
+      automationReadOnly = (
+        <ByDateAutomationReadOnly template={state.template} />
+      );
+      break;
+    case 'remainder':
+      automationReadOnly = (
+        <RemainderAutomationReadOnly template={state.template} />
+      );
+      break;
+    case 'goal':
+      automationReadOnly = <GoalAutomationReadOnly template={state.template} />;
       break;
     default:
       automationReadOnly = (

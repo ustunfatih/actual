@@ -42,11 +42,17 @@ export const getInitialState = (template: Template | null): ReducerState => {
         template,
         displayType: 'week',
       };
-    case 'spend':
     case 'by':
-      throw new Error('Goal is not yet supported');
+    case 'spend':
+      return {
+        template,
+        displayType: 'by-date',
+      };
     case 'remainder':
-      throw new Error('Remainder is not yet supported');
+      return {
+        template,
+        displayType: 'remainder',
+      };
     case 'limit':
       return {
         template,
@@ -64,7 +70,10 @@ export const getInitialState = (template: Template | null): ReducerState => {
         displayType: 'historical',
       };
     case 'goal':
-      throw new Error('Goal is not yet supported');
+      return {
+        template,
+        displayType: 'goal',
+      };
     case 'error':
       throw new Error('An error occurred while parsing the template');
     default:
@@ -168,6 +177,48 @@ const changeType = (
           priority: DEFAULT_PRIORITY,
         },
       };
+    case 'by-date':
+      if (
+        prevState.template.type === 'by' ||
+        prevState.template.type === 'spend'
+      ) {
+        return prevState;
+      }
+      return {
+        displayType: visualType,
+        template: {
+          directive: 'template',
+          type: 'by',
+          amount: 500,
+          month: `${new Date().getFullYear()}-12`,
+          priority: DEFAULT_PRIORITY,
+        },
+      };
+    case 'remainder':
+      if (prevState.template.type === 'remainder') {
+        return prevState;
+      }
+      return {
+        displayType: visualType,
+        template: {
+          directive: 'template',
+          type: 'remainder',
+          weight: 1,
+          priority: null,
+        },
+      };
+    case 'goal':
+      if (prevState.template.type === 'goal') {
+        return prevState;
+      }
+      return {
+        displayType: visualType,
+        template: {
+          directive: 'goal',
+          type: 'goal',
+          amount: 1000,
+        },
+      };
     default:
       // Make sure we're not missing any cases
       throw new Error(
@@ -215,6 +266,37 @@ function mapTemplateTypesForUpdate(
           };
         default:
           break;
+      }
+      break;
+    case 'by':
+      if (template.type === 'spend') {
+        return {
+          ...state,
+          displayType: 'by-date',
+          template: {
+            directive: 'template',
+            type: 'spend',
+            amount: state.template.amount,
+            month: state.template.month,
+            from: '',
+            priority: state.template.priority,
+          },
+        };
+      }
+      break;
+    case 'spend':
+      if (template.type === 'by') {
+        return {
+          ...state,
+          displayType: 'by-date',
+          template: {
+            directive: 'template',
+            type: 'by',
+            amount: state.template.amount,
+            month: state.template.month,
+            priority: state.template.priority,
+          },
+        };
       }
       break;
     default:

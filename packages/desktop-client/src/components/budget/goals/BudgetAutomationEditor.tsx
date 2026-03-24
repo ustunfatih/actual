@@ -17,10 +17,13 @@ import { setType } from './actions';
 import type { Action } from './actions';
 import { displayTemplateTypes } from './constants';
 import type { ReducerState } from './constants';
+import { ByDateAutomation } from './editor/ByDateAutomation';
+import { GoalAutomation } from './editor/GoalAutomation';
 import { HistoricalAutomation } from './editor/HistoricalAutomation';
 import { LimitAutomation } from './editor/LimitAutomation';
 import { PercentageAutomation } from './editor/PercentageAutomation';
 import { RefillAutomation } from './editor/RefillAutomation';
+import { RemainderAutomation } from './editor/RemainderAutomation';
 import { ScheduleAutomation } from './editor/ScheduleAutomation';
 import { WeekAutomation } from './editor/WeekAutomation';
 
@@ -85,6 +88,27 @@ const displayTypeToDescription = {
       to account for seasonal changes.
     </Trans>
   ),
+  'by-date': (
+    <Trans>
+      Automatically calculate how much to budget each month so you reach a
+      target amount by a specific date. For example, save $600 by December by
+      budgeting $75/month for 8 months.
+    </Trans>
+  ),
+  remainder: (
+    <Trans>
+      Distribute all remaining &quot;To Budget&quot; funds into this category
+      after all other automations have run. Useful as a &quot;catch-all&quot;
+      for surplus funds.
+    </Trans>
+  ),
+  goal: (
+    <Trans>
+      Set a balance goal for this category. The goal indicator tracks total
+      category balance rather than monthly contributions — ideal for long-term
+      savings targets like an emergency fund.
+    </Trans>
+  ),
 };
 
 export function BudgetAutomationEditor({
@@ -139,6 +163,21 @@ export function BudgetAutomationEditor({
     case 'historical':
       automationEditor = (
         <HistoricalAutomation template={state.template} dispatch={dispatch} />
+      );
+      break;
+    case 'by-date':
+      automationEditor = (
+        <ByDateAutomation template={state.template} dispatch={dispatch} />
+      );
+      break;
+    case 'remainder':
+      automationEditor = (
+        <RemainderAutomation template={state.template} dispatch={dispatch} />
+      );
+      break;
+    case 'goal':
+      automationEditor = (
+        <GoalAutomation template={state.template} dispatch={dispatch} />
       );
       break;
     default:
