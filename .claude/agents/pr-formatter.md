@@ -15,7 +15,7 @@ Before creating any pull request, verify and apply all three rules:
 
 Check the proposed PR title. If it does NOT start with `[AI]`, rewrite it:
 
-- Input:  `Add budget automation types`
+- Input: `Add budget automation types`
 - Output: `[AI] Add budget automation types`
 
 Never create a PR without this prefix.
@@ -25,6 +25,7 @@ Never create a PR without this prefix.
 Always include `--label "AI generated"` in the `gh pr create` command.
 
 If the label does not yet exist in the repo, create it first:
+
 ```bash
 gh label create "AI generated" --color "0075ca" --description "Pull request created by an AI agent"
 ```

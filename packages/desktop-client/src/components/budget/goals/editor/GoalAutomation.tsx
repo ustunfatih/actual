@@ -6,8 +6,9 @@ import { View } from '@actual-app/components/view';
 
 import type { GoalTemplate } from 'loot-core/types/models/templates';
 
-import { updateTemplate } from '../actions';
-import type { Action } from '../actions';
+import { updateTemplate } from '.claude/worktrees/competent-banach/packages/desktop-client/src/components/budget/goals/actions';
+import type { Action } from '.claude/worktrees/competent-banach/packages/desktop-client/src/components/budget/goals/actions';
+
 import { FormField, FormLabel } from '@desktop-client/components/forms';
 import { AmountInput } from '@desktop-client/components/util/AmountInput';
 

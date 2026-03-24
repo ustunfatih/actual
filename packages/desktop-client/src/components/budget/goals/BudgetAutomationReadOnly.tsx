@@ -87,9 +87,7 @@ export function BudgetAutomationReadOnly({
       );
       break;
     case 'goal':
-      automationReadOnly = (
-        <GoalAutomationReadOnly template={state.template} />
-      );
+      automationReadOnly = <GoalAutomationReadOnly template={state.template} />;
       break;
     default:
       automationReadOnly = (

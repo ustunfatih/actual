@@ -14,6 +14,7 @@ Work through each step below IN ORDER. Do not skip any step.
 Ask the user: "What is your planned commit message?"
 
 If the message does NOT start with `[AI]`, stop immediately and say:
+
 > "Your commit message must start with `[AI]`. Proposed fix: `[AI] <your message>`"
 
 Wait for confirmation before continuing.
@@ -54,6 +55,7 @@ If clean, confirm: "✓ Tests passed"
 ## Step 5 — Check for untranslated strings
 
 If any UI-facing string literals were added to `desktop-client`, remind the user:
+
 > "Check that new user-facing strings use the translation system (see eslint rule `no-untranslated-strings`)."
 
 ## Step 6 — Confirm and commit

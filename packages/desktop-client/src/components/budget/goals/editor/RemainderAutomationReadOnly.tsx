@@ -18,9 +18,7 @@ export const RemainderAutomationReadOnly = ({
       {weight === 1 ? (
         <Trans>Distribute remaining funds to this category</Trans>
       ) : (
-        <Trans>
-          Distribute remaining funds (weight: {{ weight }})
-        </Trans>
+        <Trans>Distribute remaining funds (weight: {{ weight }})</Trans>
       )}
     </Text>
   );
