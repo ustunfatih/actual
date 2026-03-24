@@ -10,9 +10,9 @@ import type {
   SpendTemplate,
 } from 'loot-core/types/models/templates';
 
-import { setTemplate, updateTemplate } from '.claude/worktrees/competent-banach/packages/desktop-client/src/components/budget/goals/actions';
-import type { Action } from '.claude/worktrees/competent-banach/packages/desktop-client/src/components/budget/goals/actions';
-import { DEFAULT_PRIORITY } from '.claude/worktrees/competent-banach/packages/desktop-client/src/components/budget/goals/reducer';
+import { setTemplate, updateTemplate } from '../actions';
+import type { Action } from '../actions';
+import { DEFAULT_PRIORITY } from '../reducer';
 
 import { FormField, FormLabel } from '@desktop-client/components/forms';
 import { AmountInput } from '@desktop-client/components/util/AmountInput';
